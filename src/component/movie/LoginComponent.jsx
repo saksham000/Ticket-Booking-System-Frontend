@@ -28,7 +28,11 @@ function LoginComponent() {
   return (
     <div className="Login flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
-        {showErrorMessage && <div>Please Check Your Credientials</div>}
+        {showErrorMessage && (
+          <div className="block p-1 bg-red-500 rounded font-semibold text-black">
+            Please Check Your Credientials !!!!
+          </div>
+        )}
 
         <h2 className="text-2xl font-bold text-center">Login</h2>
         <form className="mt-8 space-y-6">
