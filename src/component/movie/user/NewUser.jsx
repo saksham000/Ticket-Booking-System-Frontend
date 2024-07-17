@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createNewUserService } from "../api/User";
+import { Link } from "react-router-dom";
 function NewUser() {
   const [username, setUsername] = useState("");
   const [userId, setUserId] = useState(null);
@@ -52,6 +53,7 @@ function NewUser() {
           <p className="text-green-500">
             User created successfully! Your User ID is: {userId}
           </p>
+          <Link className="bg-green-600 p-2 mt-4 block rounded-full" to="/movies">Click Here to Search Movie</Link>
         </div>
       )}
       {error && (

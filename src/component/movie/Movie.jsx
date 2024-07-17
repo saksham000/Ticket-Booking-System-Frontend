@@ -8,6 +8,7 @@ import Logout from "./Logout";
 import UserPanle from "./user/UserPanel";
 import NewUser from "./user/NewUser";
 import OldUser from "./user/OldUser";
+import MoviePanel from "./movie/MoviePanel";
 
 function AuthRoute({ children }) {
   const authContext = useAuth();
@@ -31,8 +32,8 @@ export default function Movie() {
               path="/welcome/:username"
               element={
                 <AuthRoute>
-                  {/* // jab bhi refresh kr rha hu site ko toh ye reset kr de rha
-                  //hai sab kuch to  */}
+                  {/* jab bhi refresh kr rha hu site ko toh ye reset kr de rha
+                  hai sab kuch to / */}
                   <WelcomeComponent />
                 </AuthRoute>
               }
@@ -52,7 +53,7 @@ export default function Movie() {
               element={
                 <AuthRoute>
                   <NewUser />
-                 </AuthRoute>
+                </AuthRoute>
               }
             />
 
@@ -61,6 +62,15 @@ export default function Movie() {
               element={
                 <AuthRoute>
                   <OldUser />
+                </AuthRoute>
+              }
+            />
+
+            <Route
+              path="/movies"
+              element={
+                <AuthRoute>
+                  <MoviePanel />
                 </AuthRoute>
               }
             />

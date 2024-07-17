@@ -24,12 +24,6 @@ export default function NavBar() {
             </Link>
           )}
 
-          {isAuth && (
-            <Link to="/movies" className="text-white hover:text-gray-300">
-              Movies
-            </Link>
-          )}
-
           {!isAuth && (
             <Link to="/login" className="text-white hover:text-gray-300">
               login

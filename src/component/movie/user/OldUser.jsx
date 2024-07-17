@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { findUserService } from "../api/User";
+import { Link } from "react-router-dom";
+
 
 function OldUser() {
   const [username, setUsername] = useState("");
@@ -79,6 +81,7 @@ function OldUser() {
       {message && (
         <div className="mt-4">
           <p className="text-green-500">{message}</p>
+          <Link className="bg-green-600 p-2 mt-4 block rounded-full" to="/movies">Click Here to Search Movie</Link>
         </div>
       )}
       {error && (
