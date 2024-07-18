@@ -95,7 +95,7 @@ function MoviePanel() {
         {/* movies list */}
         {movies.length > 0 && (
           <div>
-            <h2 className="text-xl font-bold mb-2 text-purple-700">Movies</h2>
+            <h2 className="text-xl font-bold mb-2 text-purple-700 mt-7">Movies</h2>
             <ul>
               {movies.map((movie) => (
                 <li

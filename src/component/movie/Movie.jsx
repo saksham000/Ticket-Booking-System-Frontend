@@ -9,6 +9,10 @@ import UserPanle from "./user/UserPanel";
 import NewUser from "./user/NewUser";
 import OldUser from "./user/OldUser";
 import MoviePanel from "./movie/MoviePanel";
+import AdminPanel from "./admin/AdminPanel";
+import ManageUsers from "./admin/ManageUsers";
+import ManageShows from "./admin/ManageShows";
+import ManageMovies from "./admin/ManageMovies";
 
 function AuthRoute({ children }) {
   const authContext = useAuth();
@@ -35,6 +39,42 @@ export default function Movie() {
                   {/* jab bhi refresh kr rha hu site ko toh ye reset kr de rha
                   hai sab kuch to / */}
                   <WelcomeComponent />
+                </AuthRoute>
+              }
+            />
+
+            <Route
+              path="/adminpanel"
+              element={
+                <AuthRoute>
+                  <AdminPanel />
+                </AuthRoute>
+              }
+            />
+
+            <Route
+              path="/managemovies"
+              element={
+                <AuthRoute>
+                  <ManageMovies />
+                </AuthRoute>
+              }
+            />
+
+            <Route
+              path="/manageshows"
+              element={
+                <AuthRoute>
+                  <ManageShows />
+                </AuthRoute>
+              }
+            />
+
+            <Route
+              path="/manageusers"
+              element={
+                <AuthRoute>
+                  <ManageUsers />
                 </AuthRoute>
               }
             />

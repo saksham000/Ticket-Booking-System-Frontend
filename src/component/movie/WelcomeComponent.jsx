@@ -12,7 +12,7 @@ export default function WelcomeComponent() {
           <Link to="/userpanel" className=" bg-red-500 text-center p-8 rounded">
             User
           </Link>
-          <Link to="/admin" className=" bg-green-500 text-center p-8 rounded">
+          <Link to="/adminpanel" className=" bg-green-500 text-center p-8 rounded">
             Admin
           </Link>
         </div>
