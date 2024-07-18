@@ -41,6 +41,7 @@ function ManageMovies() {
         } else {
           throw new Error("Error occured");
         }
+        fetchAllMovies();
       })
       .catch((Error) => {
         alert(Error);
