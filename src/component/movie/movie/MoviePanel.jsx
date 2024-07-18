@@ -19,7 +19,7 @@ function MoviePanel() {
 
   const searchMovies = async (e) => {
     e.preventDefault();
-    findMoveByNameAndCity(movieName, city)
+    await findMoveByNameAndCity(movieName, city)
       .then((response) => {
         setMovies(response.data);
       })
@@ -28,9 +28,9 @@ function MoviePanel() {
       });
   };
 
-  const fetchShows = (movie) => {
+  const fetchShows = async (movie) => {
     setSelectedMovie(movie);
-    findShowsOfMovieById(parseInt(movie.id))
+    await findShowsOfMovieById(parseInt(movie.id))
       .then((response) => {
         setShows(response.data);
       })
@@ -39,16 +39,16 @@ function MoviePanel() {
       });
   };
 
-  const fetchSeats = (show) => {
+  const fetchSeats = async (show) => {
     setSelectedShow(show);
     setStoredShowId(show.showId);
-    fetchSeatsOfShow(show.showId).then((response) => {
+    await fetchSeatsOfShow(show.showId).then((response) => {
       setSeats(response.data);
     });
   };
 
-  const bookSeat = (seat) => {
-    bookSeatService(storedUserId, storedShowId, seat.seatNo)
+  const bookSeat = async (seat) => {
+    await bookSeatService(storedUserId, storedShowId, seat.seatNo)
       .then((response) => {
         alert("Seat is Booked Successfully !");
       })

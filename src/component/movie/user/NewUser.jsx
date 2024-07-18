@@ -15,7 +15,7 @@ function NewUser() {
           setUserId(response.data.userId);
           setError('');
         } else {
-          throw new Error("Invalid response from server");
+          throw new error("Invalid response from server");
         }
       })
       .catch((error) => {
