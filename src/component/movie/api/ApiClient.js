@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const apiClient = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "http://movie-ticket-booking-system-back-env.eba-xszgubky.ap-south-1.elasticbeanstalk.com",
   headers: {
-    'Content-Type': 'application/json', // Set default content type
+    'Content-Type': 'application/json',
   },
 });
