@@ -49,10 +49,10 @@ function MoviePanel() {
 
   const bookSeat = async (seat) => {
     await bookSeatService(storedUserId, storedShowId, seat.seatNo)
-      .then((response) => {
+      .then(() => {
         alert("Seat is Booked Successfully !");
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Soory But Seat is Alredy Booked !!");
       });
   };
@@ -60,7 +60,7 @@ function MoviePanel() {
   return (
     <div className="bg-gray-100 w-full h-full">
       <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4 text-purple-700">Movie Panel</h1>
+        <h1 className="text-2xl font-bold m-4 mb-7 text-purple-700">Movie Panel</h1>
 
         <form onSubmit={searchMovies} className="mb-4">
           <input
@@ -88,47 +88,114 @@ function MoviePanel() {
             className="border p-2 mr-2 rounded-md"
             required
           />
-          <button type="submit" className="bg-blue-500 text-black p-2 rounded-lg">
+          <button
+            type="submit"
+            className="bg-blue-500 text-black p-2 rounded-lg"
+          >
             Search
           </button>
         </form>
         {/* movies list */}
         {movies.length > 0 && (
           <div>
-            <h2 className="text-xl font-bold mb-2 text-purple-700 mt-7">Movies</h2>
-            <ul>
-              {movies.map((movie) => (
-                <li
-                  key={movie.id}
-                  onClick={() => fetchShows(movie)}
-                  className="cursor-pointer text-2xl border 
-                border-red-500 p-5 m-7 rounded-full bg-blue-400 font-semibold"
-                >
-                  {movie.movieName} - {movie.city} - {movie.date}-{" "}
-                  {movie.theatreName}
-                </li>
-              ))}
-            </ul>
+            <h2 className="text-xl font-bold m-10 text-purple-700 mt-7">
+              Movies
+            </h2>
+            <div>
+              <table className="w-full">
+                <thead className="bg-gray-50 border-b-2 border-gray-200 w-full">
+                  <tr>
+                    <th className="w-20 p-3 text-sm font-semibold tracking-wide text-center">
+                      Movie Name
+                    </th>
+                    <th className="w-20 p-3 text-sm font-semibold tracking-wide text-center">
+                      City
+                    </th>
+                    <th className="w-20 p-3 text-sm font-semibold tracking-wide text-center">
+                      Date
+                    </th>
+                    <th className="w-20 p-3 text-sm font-semibold tracking-wide text-center">
+                      Theater Name
+                    </th>
+                    <th className="w-20 p-3 text-sm font-semibold tracking-wide text-center">
+                      Select Movie
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {movies.map((movie) => (
+                    <tr key={movie.id} className="bg-white">
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        {movie.movieName}
+                      </td>
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        {movie.city}
+                      </td>
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        {movie.date}
+                      </td>
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        {movie.theatreName}
+                      </td>
+
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        <button
+                          className="p-3 bg-red-500 rounded-full font-semibold text-black border border-black hover:outline-none hover:ring-2 hover:ring-purple-500"
+                          onClick={() => fetchShows(movie)}
+                        >
+                          Select
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
         {/* Show List */}
         {selectedMovie && shows.length > 0 && (
           <div>
-            <h2 className="text-xl font-bold mb-2 text-purple-700">
+            <h2 className="text-xl font-bold m-10 text-purple-700">
               Shows for {selectedMovie.movieName}
             </h2>
-            <ul>
-              {shows.map((show) => (
-                <li
-                  key={show.showId}
-                  className="cursor-pointer text-2xl border 
-                border-red-500 p-5 m-7 rounded-full bg-blue-400 font-semibold"
-                  onClick={() => fetchSeats(show)}
-                >
-                  Show Start at: {show.showStart} - {show.showId}
-                </li>
-              ))}
-            </ul>
+
+            <div>
+              <table className="w-full">
+                <thead className="bg-gray-50 border-b-2 border-gray-200 w-full">
+                  <tr>
+                    <th className="w-20 p-3 text-sm font-semibold tracking-wide text-center">
+                      Show Starts At
+                    </th>
+                    <th className="w-20 p-3 text-sm font-semibold tracking-wide text-center">
+                      Select Movie
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {shows.map((show) => (
+                    <tr key={show.showId} className="bg-white">
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        {show.showStart}
+                      </td>
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        <button
+                          className="p-3 bg-red-500 rounded-full font-semibold text-black border border-black hover:outline-none hover:ring-2 hover:ring-purple-500"
+                          onClick={() => fetchSeats(show)}
+                        >
+                          Select
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+
+
+
+
           </div>
         )}
         {/* Seat List */}
@@ -141,7 +208,7 @@ function MoviePanel() {
               {seats.map((seat) => (
                 <li
                   key={seat.id}
-                  className="p-4 cursor-pointer m-5 bg-green-600 rounded-full"
+                  className="p-4 cursor-pointer m-5 border-b-2 border-gray-200 bg-green-600 rounded-full"
                   onClick={() => bookSeat(seat)}
                 >
                   Seat {seat.seatNo}
