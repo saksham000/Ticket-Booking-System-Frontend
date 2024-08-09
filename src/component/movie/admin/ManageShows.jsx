@@ -115,7 +115,9 @@ function ManageShows() {
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {shows.map((shows) => (
-                  <tr key={shows.showId} className="bg-white">
+                  <tr key={shows.showId} 
+                  className="bg-white"
+                  >
                     <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                       {shows.showId}
                     </td>

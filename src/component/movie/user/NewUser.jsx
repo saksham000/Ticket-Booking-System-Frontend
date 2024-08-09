@@ -15,11 +15,11 @@ function NewUser() {
           setUserId(response.data.userId);
           setError('');
         } else {
-          throw new error("Invalid response from server");
+          throw new Error("Invalid response from server");
         }
       })
-      .catch((error) => {
-        setError("Failed to create user");
+      .catch((Error) => {
+        setError(Error);
       });
   };
 

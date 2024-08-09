@@ -14,13 +14,13 @@ import ManageUsers from "./admin/ManageUsers";
 import ManageShows from "./admin/ManageShows";
 import ManageMovies from "./admin/ManageMovies";
 
-function AuthRoute({ children }) {
-  const authContext = useAuth();
+  function AuthRoute({ children }) {
+    const authContext = useAuth();
 
-  if (authContext.isAuth) return children;
+    if (authContext.isAuth) return children;
 
-  return <Navigate to="/" />;
-}
+    return <Navigate to="/" />;
+  }
 
 export default function Movie() {
   return (
